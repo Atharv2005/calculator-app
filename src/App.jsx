@@ -1,34 +1,48 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [displayOperads, setDisplayOperands] = useState(0)
+  const [operand1, setOperand1] = useState(null)
+  const [operand2, setOperand2] = useState(null)
+  const [operator, setOperator] = useState(null)
 
+  const handleButtonClick = (value) => {
+    console.log(value)
+    setDisplayOperands(value)
+  }
   return (
-    <>
+    <div>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <input type='text' value={displayOperads} disabled />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div>
+        <button value="7" onClick={() => handleButtonClick("7")}> 7 </button >
+        <button value="8" onClick={() => handleButtonClick("8")}> 8</button >
+        <button value="9"> 9</button >
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      <div>
+        <button value="4" > 4</button >
+        <button value="5"> 5</button >
+        <button value="6"> 6</button >
+      </div>
+
+      <div>
+        <button value="1" > 1</button >
+        <button value="2"> 2</button >
+        <button value="3"> 3</button >
+      </div>
+
+      <div>
+        <button value="+" > +</button >
+        <button value="-"> -</button >
+        <button value="*"> X</button >
+        <button value="/" > 1</button >
+      </div>
+
+
+    </div>
   )
 }
 
