@@ -8,7 +8,29 @@ function App() {
 
   const handleButtonClick = (value) => {
     console.log(value)
-    setDisplayOperands(value)
+    setDisplayOperands((previosValue) => previosValue + value)
+    console.log(typeof (value))
+    // Clear value
+
+    if (value === "C") {
+      setDisplayOperands("")
+      setOperator(null)
+      setOperand1(null)
+      setOperand2(null)
+      return
+    }
+
+    if (value === "Backspace") {
+      setDisplayOperands((previosValue) => previosValue - value)
+
+    }
+
+    // setting operators
+    if (['+', '-', '*', '/'].includes(value)) {
+      setOperator(value)
+      console.log(operator)
+    }
+
   }
   return (
     <div>
@@ -17,32 +39,34 @@ function App() {
       </div>
 
       <div>
-        <button value="7" onClick={() => handleButtonClick("7")}> 7 </button >
-        <button value="8" onClick={() => handleButtonClick("8")}> 8</button >
-        <button value="9"> 9</button >
+        <button value="7" onClick={() => handleButtonClick(+"7")}> 7 </button >
+        <button value="8" onClick={() => handleButtonClick(+"8")}> 8</button >
+        <button value="9" onClick={() => handleButtonClick(+"9")}> 9</button >
       </div>
 
       <div>
-        <button value="4" > 4</button >
-        <button value="5"> 5</button >
-        <button value="6"> 6</button >
+        <button value="4" onClick={() => handleButtonClick(+"4")}> 4</button >
+        <button value="5" onClick={() => handleButtonClick(+"5")}> 5</button >
+        <button value="6" onClick={() => handleButtonClick(+"6")}> 6</button >
       </div>
 
       <div>
-        <button value="1" > 1</button >
-        <button value="2"> 2</button >
-        <button value="3"> 3</button >
+        <button value="1" onClick={() => handleButtonClick(+"1")} > 1</button >
+        <button value="2" onClick={() => handleButtonClick(+"2")}> 2</button >
+        <button value="3" onClick={() => handleButtonClick(+"3")}> 3</button >
       </div>
 
       <div>
-        <button value="+" > +</button >
-        <button value="-"> -</button >
-        <button value="*"> X</button >
-        <button value="/" > 1</button >
+        <button value="+" onClick={() => handleButtonClick("+")}> +</button >
+        <button value="-" onClick={() => handleButtonClick("-")}> -</button >
+        <button value="*" onClick={() => handleButtonClick("*")}> X</button >
+        <button value="/" onClick={() => handleButtonClick("/")}>/</button >
+        <button value="C" onClick={() => handleButtonClick("C")}> C</button >
+        <button value="C" onClick={() => handleButtonClick("")}> =</button >
       </div>
 
 
-    </div>
+    </div >
   )
 }
 
