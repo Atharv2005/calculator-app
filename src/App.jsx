@@ -5,6 +5,7 @@ function App() {
   const [operand1, setOperand1] = useState(null)
   const [operand2, setOperand2] = useState(null)
   const [operator, setOperator] = useState(null)
+  const [secondSplitValue, setSecondSplitValue] = useState(null)
 
   const handleButtonClick = (value) => {
     setDisplayOperands((previosValue) => previosValue + value)
@@ -27,11 +28,11 @@ function App() {
       setOperand1(parseFloat(displayOperads))
     }
 
-    if (operand1 !== null && operator !== null && displayOperads !== null) {
-      const splitOperands = displayOperads.split(operator)
-      const secOperand = parseFloat((splitOperands[1]))
-      setOperand2(secOperand)
-    }
+    // if (operand1 !== null && operator !== null && displayOperads !== null) {
+    // const splitOperands = displayOperads.split(operator)
+    //console.log(splitOperands)
+
+    // }
 
   }
 
@@ -73,6 +74,13 @@ function App() {
     calculate()
   }
 
+  useEffect(() => {
+    if (operator !== null && displayOperads !== "") {
+      const splitOperands = displayOperads.split(operator)
+      const secOperand = parseFloat(splitOperands[1])
+      setOperand2(isNaN(secOperand) ? null : secOperand)
+    }
+  }, [operator, displayOperads])
 
 
   useEffect(() => {
