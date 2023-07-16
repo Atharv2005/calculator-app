@@ -27,16 +27,59 @@ function App() {
       setOperand1(parseFloat(displayOperads))
     }
 
-    if (operand1 !== null && operator !== null) {
-      setOperand2(displayOperads)
+    if (operand1 !== null && operator !== null && displayOperads !== null) {
+      const splitOperands = displayOperads.split(operator)
+      const secOperand = parseFloat((splitOperands[1]))
+      setOperand2(secOperand)
     }
 
   }
+
+  // Compute the values
+
+  const calculate = () => {
+    let computedValue = null
+    if (operand1 !== null && operator !== null && displayOperads !== null) {
+
+      switch (operator) {
+        case "+":
+          computedValue = operand1 + operand2
+          break
+        case "*":
+          computedValue = operand1 * operand2
+          break
+
+        case "-":
+          computedValue = operand1 - operand2
+          break
+
+        case "/":
+          computedValue = operand1 / operand2
+          break
+
+      }
+
+    }
+    if (computedValue !== null) {
+
+      setDisplayOperands(computedValue.toString())
+
+      console.log(computedValue)
+    }
+
+  }
+
+  const handleCalculate = () => {
+    calculate()
+  }
+
+
 
   useEffect(() => {
     console.log("this is operand 1 " + operand1)
     console.log("this is operand2 " + operand2)
   }, [operand1, operand2])
+
 
   return (
     <div>
@@ -68,7 +111,7 @@ function App() {
         <button value="*" onClick={() => handleButtonClick("*")}> X</button >
         <button value="/" onClick={() => handleButtonClick("/")}>/</button >
         <button value="C" onClick={() => handleButtonClick("C")}> C</button >
-        <button value="C" onClick={() => handleButtonClick("")}> =</button >
+        <button value="=" onClick={() => handleCalculate()}> =</button >
       </div>
 
 
