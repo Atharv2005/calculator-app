@@ -78,7 +78,7 @@ function App() {
     if (operator !== null && displayOperads !== "") {
       const splitOperands = displayOperads.split(operator)
       const secOperand = parseFloat(splitOperands[1])
-      setOperand2(isNaN(secOperand) ? null : secOperand)
+      setOperand2(secOperand)
     }
   }, [operator, displayOperads])
 
@@ -111,6 +111,8 @@ function App() {
         <button value="1" onClick={() => handleButtonClick("1")} > 1</button >
         <button value="2" onClick={() => handleButtonClick("2")}> 2</button >
         <button value="3" onClick={() => handleButtonClick("3")}> 3</button >
+        <button value="0" onClick={() => handleButtonClick("0")}> 0</button >
+
       </div>
 
       <div>
